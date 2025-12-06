@@ -1,0 +1,44 @@
+1bool isprime(long long num)
+2{
+3    if(num<2)
+4    {
+5        return false;
+6    }
+7    if(num==2)
+8    {
+9        return true;
+10    }
+11    if(num%2==0)
+12    {
+13        return false;
+14    }
+15    for(long long i=3;i*i<=num;i+=2)
+16        {
+17            if(num%i==0)
+18            {
+19                return false;
+20            }
+21        }
+22    return true;
+23}
+24class Solution {
+25public:
+26    bool completePrime(int num) {
+27        string s=to_string(num);
+28        int n=s.size();
+29        for(int i=1;i<=n;i++)
+30            {
+31                long long p=stoll(s.substr(0,i));
+32                long long su=stoll(s.substr(n-i,i));
+33                if(!isprime(p))
+34                {
+35                    return false;
+36                }
+37                if(!isprime(su))
+38                {
+39                    return false;
+40                }
+41            }
+42        return true;
+43    }
+44};
