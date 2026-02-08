@@ -1,0 +1,35 @@
+1class Solution {
+2public:
+3    long long countSubarrays(vector<int>& nums, long long k) {
+4        deque<int>mx,mi;
+5        long long ans=0;
+6        int l=0;
+7        for(int i=0;i<nums.size();i++)
+8        {
+9            while(!mx.empty() && nums[mx.back()]<=nums[i])
+10            {
+11                mx.pop_back();
+12            }
+13            mx.push_back(i);
+14            while(!mi.empty() && nums[mi.back()]>=nums[i])
+15            {
+16                mi.pop_back();
+17            }
+18            mi.push_back(i);
+19            while((long long)(nums[mx.front()]-nums[mi.front()])*(i-l+1)>k)
+20            {
+21                if(mx.front()==l)
+22                {
+23                    mx.pop_front();
+24                }
+25                if(mi.front()==l)
+26                {
+27                    mi.pop_front();
+28                }
+29                l++;
+30            }
+31            ans+=i-l+1;
+32        }
+33        return ans;
+34    }
+35};
