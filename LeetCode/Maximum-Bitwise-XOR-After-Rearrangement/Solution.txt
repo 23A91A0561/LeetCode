@@ -1,0 +1,61 @@
+1class Solution {
+2public:
+3    string maximumXor(string s, string t) {
+4        int one=0,zero=0;
+5    	for(auto &i:t)
+6    	{
+7    	    if(i=='0')
+8    	    {
+9    	        zero++;
+10    	    }
+11    	    else
+12    	    {
+13    	        one++;
+14    	    }
+15    	}
+16    	string ans="";
+17    	for(auto &i:s)
+18    	{
+19    	    if(i=='0')
+20    	    {
+21    	        if(one!=0)
+22    	        {
+23    	            one--;
+24    	            ans+='1';
+25    	        }
+26    	        else
+27    	        {
+28    	            zero--;
+29    	            ans+='0';
+30    	        }
+31    	        
+32    	    }
+33    	    else
+34    	    {
+35    	        if(zero!=0)
+36    	        {
+37    	            zero--;
+38    	            ans+='0';
+39    	        }
+40    	        else
+41    	        {
+42    	            one--;
+43    	            ans+='1';
+44    	        }
+45    	    }
+46    	}
+47    	string res="";
+48    	for(int i=0;i<ans.size();i++)
+49    	{
+50    	    if(ans[i]==s[i])
+51    	    {
+52    	        res+='0';
+53    	    }
+54    	    else
+55    	    {
+56    	        res+='1';
+57    	    }
+58    	}
+59    	return res;
+60    }
+61};
