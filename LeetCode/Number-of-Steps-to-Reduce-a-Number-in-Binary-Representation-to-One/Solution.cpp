@@ -38,12 +38,11 @@
 38            if(s[s.size()-1]=='1')
 39            {
 40                s=check(s);
-41                cout <<s <<endl;
-42                ans++;
-43            }
-44            s.pop_back();
-45            ans++;
-46        }
-47        return ans;
-48    }
-49};
+41                ans++;
+42            }
+43            s.pop_back();
+44            ans++;
+45        }
+46        return ans;
+47    }
+48};
