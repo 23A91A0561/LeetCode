@@ -1,18 +1,23 @@
 class Solution {
 public:
     long long sumAndMultiply(int n) {
-        string s=to_string(n);
-        long long sum=0,digit=0;
-        int c=0;
-        for(auto &i:s)
+        if(n==0)
         {
-            if(i!='0')
-            {
-                c=i-'0';
-                sum+=c;
-                digit=digit*10+c;
-            }
+            return 0;
         }
-        return digit*sum;
+        int i=1;
+        long long ans=0;
+        long long sum=0;
+        while(n!=0)
+        {
+            if(n%10!=0)
+            {
+                ans+=(n%10)*i;
+                i*=10;
+                sum+=n%10;
+            }
+            n/=10;
+        }
+        return sum*ans;
     }
 };
